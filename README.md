@@ -53,7 +53,7 @@ Jenkinsfile was created in a windows machine, for this reason "bat" command is u
 - make sure to download the repo 
 - do checkout to 'master' branch
 - execute 'npm install'
-- execute 'npm run E2ETest' which is a custom command to execute the automated test case.
+- execute 'npm run postman-test' which is a custom command to execute the automated postman collection through newman.
 
 ## ABOUT THE SOLUTION
 
