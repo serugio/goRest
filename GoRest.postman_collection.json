@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "b2515088-814c-4afd-a951-8cd204d2c7ef",
+		"name": "GoRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1708978"
+	},
+	"item": [
+		{
+			"name": "Get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Scenario: 001 visualize server response STATUS 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Scenario: 002 verify objects in response contain needed values\", function () {\r",
+							"    var arrayData = pm.responseBody;\r",
+							"    const arr = pm.response.json();\r",
+							"    const requiredProperties = [\"id\", \"name\", \"email\", \"gender\", \"status\"];\r",
+							"    arr.forEach(obj => {\r",
+							"        requiredProperties.forEach(prop => {\r",
+							"            pm.expect(obj).to.have.property(prop);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Scenario: 003 to have x-pagination-limit\", function () {\r",
+							"    pm.response.to.have.header(\"x-pagination-limit\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Scenario: 004 to have x-pagination-page\", function () {\r",
+							"    pm.response.to.have.header(\"x-pagination-page\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Scenario: 005 to have x-pagination-total\", function () {\r",
+							"    pm.response.to.have.header(\"x-pagination-total\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}//public/v2/users/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"",
+						"public",
+						"v2",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Scenario: 001 visualize server response STATUS 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"const arr = pm.response.json();\r",
+							"pm.test(\"Scenario: 002 verify objects in response contain needed values\", function () {\r",
+							"    pm.expect(arr).to.have.property('id');\r",
+							"    pm.expect(arr).to.have.property('name');\r",
+							"    pm.expect(arr).to.have.property('email');\r",
+							"    pm.expect(arr).to.have.property('gender');\r",
+							"    pm.expect(arr).to.have.property('status');\r",
+							"});\r",
+							"pm.environment.set('id', arr.id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test1\",\r\n    \"email\": \"test1{{$randomAlphaNumeric}}@{{$randomBsAdjective}}.example{{$randomInt}}\",\r\n    \"gender\": \"male\",\r\n    \"status\": \"inactive\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}//public/v2/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"",
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put users update email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Scenario: 001 visualize server response STATUS 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const arr = pm.response.json();\r",
+							"pm.test(\"Scenario: 002 verify objects in response contain needed values\", function () {\r",
+							"    pm.expect(arr).to.have.property('id');\r",
+							"    pm.expect(arr).to.have.property('name');\r",
+							"    pm.expect(arr).to.have.property('email');\r",
+							"    pm.expect(arr).to.have.property('gender');\r",
+							"    pm.expect(arr).to.have.property('status');\r",
+							"});\r",
+							"pm.environment.set('id', arr.id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set('newEmail', 'test1{{$randomAlphaNumeric}}@{{$randomBsAdjective}}.example{{$randomInt}}', String)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test1\",\r\n    \"email\": \"{{newEmail}}\",\r\n    \"gender\": \"male\",\r\n    \"status\": \"inactive\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}//public/v2/users/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"",
+						"public",
+						"v2",
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
