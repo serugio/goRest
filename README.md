@@ -66,3 +66,7 @@ Is the implementation of an E2E scenario where are both types of validation comp
 ## ABOUT THE TESTING APPROACH
 - due to the time I chosed to work with an E2E test case that covers an integration testing approach. However, it is missing other validatios such as negative test cases to validate error paths like wrong authentication data, wrong parameters, error handling)
 
+## NOTE 2
+
+- Just for demo purposes the authorization token is shared in the environment file. This is not a good practice.
+
