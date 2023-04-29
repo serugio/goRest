@@ -10,8 +10,6 @@ https://user-images.githubusercontent.com/43422922/235315764-83ba13e8-a0f4-4bcd-
 
 ## pipeline newman demo
 
-
-
 https://user-images.githubusercontent.com/43422922/235315948-35b7fd72-bee5-4628-8e50-2fca99256433.mp4
 
 ## To Enable CI/CD in Jenkins
@@ -59,11 +57,11 @@ Jenkinsfile was created in a windows machine, for this reason "bat" command is u
 
 ## ABOUT THE SOLUTION
 
-Is the implementation of an E2E test case for the purchase flow of the https://www.saucedemo.com/ web application.
-- Cypress is the chosen automation tool
-- It was added support to Gherkins syntax in order to allow BDD approach. (using 'feature' 'stepDefinition' and 'pageClasess' approach.
-- It was added support to typescript
-- It is using mochawesome reports as reporting tool.
+Is the implementation of an E2E test case for the user REST API https://gorest.co.in/.
+- Postman is the chosen testing tool (there are automated tests cases implemented here, using dynamic data)
+- It was covered only the positive tests cases and validations such as response code, basic json structure in response
+- Newman is being used inside a pipeline created in jenkins to automate its execution
+- It is missing other validatios such as negative test cases to validate error paths like wron authentication data, wrong parameters)
 
 ## ABOUT THE TESTING APPROACH
 - due to the time I chosed to work with an E2E test case that covers the positive path of the purchase flow. However, the coverage can be improved adding different scenarios like (logout in the middle of the flow and then re-login, include error paths, validate that prices and taxes work as intended).
