@@ -20,9 +20,9 @@ pipeline {
             }
         }
     }
-    // post {
-    //     always {
-    //         archiveArtifacts artifacts: 'mochawesome-report/**/*.*', fingerprint: true
-    //     }
-    // }
+    post {
+        always {
+            archiveArtifacts artifacts: 'newman/*.*', fingerprint: true
+        }
+    }
 }

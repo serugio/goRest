@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postman-test": "npx newman run GoRest.postman_collection.json --environment testing.postman_environment.json"
+    "postman-test": "npx newman run GoRest.postman_collection.json --environment testing.postman_environment.json -r cli,json"
   },
   "author": "",
   "license": "ISC",
