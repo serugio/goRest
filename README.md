@@ -57,13 +57,12 @@ Jenkinsfile was created in a windows machine, for this reason "bat" command is u
 
 ## ABOUT THE SOLUTION
 
-Is the implementation of an E2E test case for the user REST API https://gorest.co.in/.
+Is the implementation of an E2E scenario where are both types of validation component and integration) for the user REST API https://gorest.co.in/users.
 - Postman is the chosen testing tool (there are automated tests cases implemented here, using dynamic data)
 - It was covered only the positive tests cases and validations such as response code, basic json structure in response
 - Newman is being used inside a pipeline created in jenkins to automate its execution
-- It is missing other validatios such as negative test cases to validate error paths like wron authentication data, wrong parameters)
+
 
 ## ABOUT THE TESTING APPROACH
-- due to the time I chosed to work with an E2E test case that covers the positive path of the purchase flow. However, the coverage can be improved adding different scenarios like (logout in the middle of the flow and then re-login, include error paths, validate that prices and taxes work as intended).
--test case design is delivered in attached file trough email.
+- due to the time I chosed to work with an E2E test case that covers an integration testing approach. However, it is missing other validatios such as negative test cases to validate error paths like wrong authentication data, wrong parameters, error handling)
 
