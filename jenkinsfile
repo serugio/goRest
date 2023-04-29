@@ -4,7 +4,7 @@ pipeline {
         stage('checkout') {
             steps {
                 checkout scmGit(
-                    branches: [[name: '*/master']],
+                    branches: [[name: '*/main']],
                     userRemoteConfigs: [[credentialsId: 'serch',
                         url: 'https://github.com/serugio/goRest']])
             }
